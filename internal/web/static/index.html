@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>井深对齐台</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>井深对齐台</h1>
+      <p id="run-title">加载中…</p>
+    </div>
+    <div class="actions">
+      <button id="solve-btn">重新求解</button>
+      <button id="reset-btn">恢复固定 fixture</button>
+      <button id="export-btn">导出运行记录</button>
+      <label class="file-btn">导入复核<input id="import-file" type="file" accept="application/json"></label>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel settings-panel">
+      <h2>对齐口径</h2>
+      <label>最小伸缩率 <input id="min-stretch" type="number" step="0.05" min="0.01"></label>
+      <label>最大伸缩率 <input id="max-stretch" type="number" step="0.05" min="0.01"></label>
+      <label>软锦标权重 <input id="soft-weight" type="number" step="0.1"></label>
+      <label>候选路径数 <input id="candidate-count" type="number" min="1" max="8"></label>
+      <button id="settings-btn">应用并重算</button>
+    </section>
+
+    <section class="panel conflict-panel">
+      <h2>自动建议与人工约束</h2>
+      <div id="conflicts" class="conflict-list"></div>
+    </section>
+
+    <section class="panel chart-panel">
+      <div class="panel-title">
+        <h2>多曲线与锦标对</h2>
+        <p>拖动实线菱形修改深度；灰色区域是共同无数据段，不跨段计算曲线相似性。</p>
+      </div>
+      <div id="chart" class="chart"></div>
+    </section>
+
+    <section class="grid-two">
+      <section class="panel">
+        <h2>候选路径与成本分解</h2>
+        <div id="candidates"></div>
+      </section>
+      <section class="panel">
+        <h2>控制点</h2>
+        <div class="table-wrap" id="controls"></div>
+      </section>
+    </section>
+
+    <section class="grid-two">
+      <section class="panel">
+        <h2>无数据区段与桥接</h2>
+        <div id="gaps"></div>
+      </section>
+      <section class="panel">
+        <h2>运行记录 / 重放</h2>
+        <div id="runs" class="runs"></div>
+      </section>
+    </section>
+  </main>
+<script src="/app.js"></script>
+</body>
+</html>
