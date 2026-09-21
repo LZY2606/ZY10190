@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>井深对齐台</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>井深对齐台</h1>
+    <p>分段单调深度映射 · 硬锦标 / 软锦标 · 空缺不零填</p>
+  </div>
+  <div class="actions">
+    <label>最小伸缩 <input id="minStretch" type="number" step="0.01" value="0.75"></label>
+    <label>最大伸缩 <input id="maxStretch" type="number" step="0.01" value="1.20"></label>
+    <button id="solveBtn" class="primary">重算候选路径</button>
+    <button id="replayBtn">重放操作</button>
+    <button id="exportBtn">导出运行记录</button>
+    <button id="importBtn">导入记录</button>
+    <button id="resetBtn">清空并恢复 fixture</button>
+    <input id="importFile" type="file" accept="application/json" hidden>
+  </div>
+</header>
+
+<main>
+  <section class="conflicts" id="conflictPanel"></section>
+  <section class="workspace">
+    <aside class="left-panel">
+      <h2>锦标</h2>
+      <div id="markerList" class="marker-list"></div>
+      <h2>成本分解</h2>
+      <div id="costPanel" class="panel-card">尚未运行。</div>
+      <h2>对齐差异</h2>
+      <div id="diffPanel" class="panel-card">切换候选路径后显示。</div>
+      <h2>无数据区段</h2>
+      <div id="nodataPanel" class="panel-card"></div>
+    </aside>
+    <section class="chart-card">
+      <div class="chart-title">
+        <strong id="candidateName">候选路径</strong>
+        <span id="stretchSummary"></span>
+      </div>
+      <svg id="chart" viewBox="0 0 1120 760" role="img"></svg>
+      <div class="hint">拖动左右两侧三角锦标调整对应；虚线蓝点为软锦标，红色锦标为冲突硬锦标。中间线条颜色代表局部伸缩率。</div>
+    </section>
+    <aside class="right-panel">
+      <h2>候选路径</h2>
+      <div id="candidateList"></div>
+      <h2>运行历史</h2>
+      <div id="runList" class="run-list"></div>
+    </aside>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>

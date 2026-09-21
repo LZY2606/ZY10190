@@ -34,3 +34,8 @@ coverage/
 .vite/
 .turbo/
 *.tsbuildinfo
+
+# Local service database
+depthalign.db
+depthalign.db-wal
+depthalign.db-shm
